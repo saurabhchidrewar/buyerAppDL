@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sourceone.buyer",
+      "sha256_cert_fingerprints": [
+        "AE:33:20:FB:EE:BD:C9:EE:EB:E6:4A:B3:35:2C:9C:37:39:89:82:D5:5D:A1:63:7B:13:3A:E5:36:5A:6F:18:56"
+      ]
+    }
+  }
+]
+

@@ -1,0 +1,18 @@
+{
+  "applinks":{
+     "apps":[
+        
+     ],
+     "defaults":{
+        "percentEncoded":false
+     },
+     "details":[
+        {
+           "appID":"9675XXQZ5X.com.sourceone.buyer",
+           "paths":[
+              "*","/"
+           ]
+        }
+     ]
+  }
+}

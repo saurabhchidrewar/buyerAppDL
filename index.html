@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Link Handler</title>
+</head>
+<body>
+  <script>
+    function handleDeepLink() {
+      var currentPath = window.location.pathname;
+      
+
+      setTimeout(() => {
+        window.location.href = 'http://app.source.one';
+      }, 3000);
+    }
+
+    window.onload = handleDeepLink;
+  </script>
+</body>
+</html>
