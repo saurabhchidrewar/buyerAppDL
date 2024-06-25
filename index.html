@@ -8,6 +8,11 @@
     <body>
         <script>
             function getURL() {
+                const APP_URLS = {
+                    android: "market://details?id=com.sourceone.buyer",
+                    ios: "https://apps.apple.com/in/app/source-buy/id6443432457",
+                };
+
                 if (navigator.userAgent.indexOf("Android") !== -1) {
                     return APP_URLS.android;
                 }
