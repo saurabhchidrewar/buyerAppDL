@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deep Link Handler</title>
-</head>
-<body>
-  <script>
-    function handleDeepLink() {
-      var currentPath = window.location.pathname;
-      
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Deep Link Handler</title>
+    </head>
+    <body>
+        <script>
+            function getURL() {
+                if (navigator.userAgent.indexOf("Android") !== -1) {
+                    return APP_URLS.android;
+                }
 
-      setTimeout(() => {
-        window.location.href = 'http://app.source.one';
-      }, 3000);
-    }
+                if (
+                    navigator.userAgent.indexOf("iPhone") !== -1 ||
+                    navigator.userAgent.indexOf("iPad") !== -1
+                ) {
+                    console.log("This device is running iOS.");
+                    return APP_URLS.ios;
+                }
 
-    window.onload = handleDeepLink;
-  </script>
-</body>
+                return "https://app.source.one";
+            }
+
+            function handleDeepLink() {
+                var currentPath = window.location.pathname;
+
+                setTimeout(() => {
+                    window.location.href = getURL();
+                }, 3000);
+            }
+
+            window.onload = handleDeepLink;
+        </script>
+    </body>
 </html>
