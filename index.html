@@ -14,7 +14,7 @@
                 };
 
                 if (navigator.userAgent.indexOf("Android") !== -1) {
-                    return "intent://sourceoneapp-dl.netlify.app/#Intent;scheme=https;package=com.sourceone.buyer;end";
+                    return APP_URLS.android;
                 }
 
                 if (
@@ -29,12 +29,11 @@
             }
 
             function handleDeepLink() {
-                // var currentPath = window.location.pathname;
-                window.location.replace(getURL());
+                var currentPath = window.location.pathname;
 
-                // setTimeout(() => {
-                //     window.location.href = getURL();
-                // }, 3000);
+                setTimeout(() => {
+                    window.location.href = getURL();
+                }, 2000);
             }
 
             window.onload = handleDeepLink;
