@@ -29,11 +29,12 @@
             }
 
             function handleDeepLink() {
-                var currentPath = window.location.pathname;
+                // var currentPath = window.location.pathname;
+                window.location.replace(getURL());
 
-                setTimeout(() => {
-                    window.location.href = getURL();
-                }, 3000);
+                // setTimeout(() => {
+                //     window.location.href = getURL();
+                // }, 3000);
             }
 
             window.onload = handleDeepLink;
