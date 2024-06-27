@@ -4,8 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Source.One App</title>
-    </head>
-    <body>
         <script>
             function getURL() {
                 const APP_URLS = {
@@ -29,15 +27,23 @@
             }
 
             function handleDeepLink() {
-                var currentPath = window.location.pathname;
+                const appLink =
+                    "sourceonebuyerapp://sourceoneapp-dl.netlify.app";
+                const start = new Date().getTime();
+                const timeout = 2000;
+
+                window.location = appLink;
 
                 setTimeout(() => {
-                    window.location.href = getURL();
-                }, 2000);
+                    const end = new Date().getTime();
+                    if (end - start < timeout + 100) {
+                        window.location.href = getURL();
+                    }
+                }, timeout);
             }
-
-            // window.onload = handleDeepLink;
-            window.open("sourceonebuyerapp://sourceoneapp-dl.netlify.app");
         </script>
+    </head>
+    <body>
+        <button onclick="handleDeepLink()">Click here</button>
     </body>
 </html>
