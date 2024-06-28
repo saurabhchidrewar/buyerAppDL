@@ -27,9 +27,28 @@
                 return "https://app.source.one";
             }
 
+            function getAppIntentLink() {
+                const APP_URLS = {
+                    android: "sourceonebuyerapp://sourceoneapp-dl.netlify.app",
+                    ios: "", //TODO:
+                };
+
+                if (navigator.userAgent.indexOf("Android") !== -1) {
+                    return APP_URLS.android;
+                }
+
+                if (
+                    navigator.userAgent.indexOf("iPhone") !== -1 ||
+                    navigator.userAgent.indexOf("iPad") !== -1
+                ) {
+                    return APP_URLS.ios;
+                }
+
+                return "https://app.source.one";
+            }
+
             function handleDeepLink() {
-                const appLink =
-                    "sourceonebuyerapp://sourceoneapp-dl.netlify.app";
+                const appLink = getAppIntentLink();
                 const start = new Date().getTime();
                 const timeout = 2000;
 
