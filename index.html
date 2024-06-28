@@ -49,6 +49,9 @@
 
             function handleDeepLink() {
                 const appLink = getAppIntentLink();
+
+                if (appLink.length === 0) return;
+
                 const start = new Date().getTime();
                 const timeout = 2000;
 
