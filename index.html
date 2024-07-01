@@ -68,15 +68,13 @@
             }
 
             function displayRedirectionMessage() {
-                return !isSafariBrowser;
+                return !isSafariBrowser();
             }
 
             document.addEventListener("DOMContentLoaded", function () {
                 if (!displayRedirectionMessage()) {
                     document.getElementById("redirectionMsg").style.display =
                         "none";
-                } else {
-                    handleDeepLink();
                 }
             });
 
