@@ -31,7 +31,7 @@
                     return "sourceonebuyerapp://sourceoneapp-dl.netlify.app";
                 }
 
-                return "https://app.source.one";
+                return "";
             }
 
             function handleDeepLink() {
@@ -39,7 +39,7 @@
                 const start = new Date().getTime();
                 const timeout = 2000;
 
-                window.location = appLink;
+                if (appLink) window.location = appLink;
 
                 setTimeout(() => {
                     const end = new Date().getTime();
