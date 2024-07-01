@@ -20,7 +20,6 @@
                     navigator.userAgent.indexOf("iPhone") !== -1 ||
                     navigator.userAgent.indexOf("iPad") !== -1
                 ) {
-                    console.log("This device is running iOS.");
                     return APP_URLS.ios;
                 }
 
@@ -50,11 +49,35 @@
                 }, timeout);
             }
 
+            function displayRedirectionMessage() {
+                var ua = window.navigator.userAgent;
+                var iOS = ua.match(/iPad/i) || ua.match(/iPhone/i);
+                var webkit = ua.match(/WebKit/i);
+                var iOSSafari =
+                    iOS &&
+                    webkit &&
+                    !ua.match(/CriOS/i) &&
+                    !ua.match(/EdgiOS/i) &&
+                    !ua.match(/Chrome/i) &&
+                    !ua.match(/Edg/i);
+                if (iOSSafari) return false;
+                return true;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                if (!displayRedirectionMessage()) {
+                    document.getElementById("redirectionMsg").style.display =
+                        "none";
+                } else {
+                    handleDeepLink();
+                }
+            });
+
             window.onload = handleDeepLink;
         </script>
     </head>
     <body class="bg-gray-100">
-        <div class="container mx-auto p-4">
+        <div class="container mx-auto p-4" id="redirectionMsg">
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <div class="text-center mt-4">
                     <img src="assets/img.jpg" alt="" class="w-60 mx-auto" />
