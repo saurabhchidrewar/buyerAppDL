@@ -16,6 +16,8 @@
                     return APP_URLS.android;
                 }
 
+                if (isSafariBrowser()) return "";
+
                 if (
                     navigator.userAgent.indexOf("iPhone") !== -1 ||
                     navigator.userAgent.indexOf("iPad") !== -1
@@ -44,12 +46,14 @@
                 setTimeout(() => {
                     const end = new Date().getTime();
                     if (end - start < timeout + 100) {
-                        window.location.href = getURL();
+                        const autoRedirectUrl = getURL();
+                        if (autoRedirectUrl)
+                            window.location.href = autoRedirectUrl;
                     }
                 }, timeout);
             }
 
-            function displayRedirectionMessage() {
+            function isSafariBrowser() {
                 var ua = window.navigator.userAgent;
                 var iOS = ua.match(/iPad/i) || ua.match(/iPhone/i);
                 var webkit = ua.match(/WebKit/i);
@@ -60,8 +64,11 @@
                     !ua.match(/EdgiOS/i) &&
                     !ua.match(/Chrome/i) &&
                     !ua.match(/Edg/i);
-                if (iOSSafari) return false;
-                return true;
+                return iOSSafari;
+            }
+
+            function displayRedirectionMessage() {
+                return !isSafariBrowser;
             }
 
             document.addEventListener("DOMContentLoaded", function () {
