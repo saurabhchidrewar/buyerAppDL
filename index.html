@@ -6,14 +6,15 @@
         <title>Source.One App</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
-            function getURL() {
-                const APP_URLS = {
-                    // android:
-                    //     "https://play.google.com/store/apps/details?id=com.sourceone.buyer",
-                    android: "market://details?id=com.sourceone.buyer",
-                    ios: "https://apps.apple.com/in/app/source-one/id6443432457",
-                };
+            const APP_URLS = {
+                // android:
+                //     "https://play.google.com/store/apps/details?id=com.sourceone.buyer",
+                android: "market://details?id=com.sourceone.buyer",
+                ios: "https://apps.apple.com/in/app/source-one/id6443432457",
+                default: "http://buyer-app.source.one",
+            };
 
+            function getURL() {
                 if (navigator.userAgent.indexOf("Android") !== -1) {
                     return APP_URLS.android;
                 }
@@ -25,15 +26,14 @@
                     return APP_URLS.ios;
                 }
 
-                return "buyer-app.source.one";
+                return APP_URLS.default;
             }
 
             function getAppIntentLink() {
                 if (navigator.userAgent.indexOf("Android") !== -1) {
                     return "sourceonebuyerapp://sourceoneapp-dl.netlify.app";
                 }
-
-                return "buyer-app.source.one";
+                return APP_URLS.default;
             }
 
             function handleDeepLink() {
