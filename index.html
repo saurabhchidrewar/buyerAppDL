@@ -31,9 +31,9 @@
 
             function getAppIntentLink() {
                 if (navigator.userAgent.indexOf("Android") !== -1) {
-                    return "sourceonebuyerapp://sourceoneapp-dl.netlify.app";
+                    return "sourceonebuyerapp://app.source.one";
                 }
-                return APP_URLS.default;
+                return "";
             }
 
             function handleDeepLink() {
